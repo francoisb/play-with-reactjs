@@ -1,14 +1,12 @@
 import React from 'react';
 import { Control, Form } from 'react-redux-form';
 
+import store from './../store';
+import editMe from './../actions/me';
+
 class MeForm extends React.Component {
     handleSubmit = me => {
-        console.log(me)
-        // Do whatever you like in here.
-        // If you connect the UserForm to the Redux store,
-        // you can dispatch actions such as:
-        // dispatch(actions.submit('user', somePromise));
-        // etc.
+        store.dispatch(editMe(me.firstname, me.lastname, me.email));
     }
 
     render() {
@@ -30,7 +28,7 @@ class MeForm extends React.Component {
                     <button type="submit">Ok</button>
                 </menu>
             </Form>
-        )
+        );
     }
 }
 
